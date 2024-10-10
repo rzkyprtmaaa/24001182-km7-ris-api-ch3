@@ -14,8 +14,24 @@ exports.getCarById = (req, res, next) => {
   successResponse(res, data);
 };
 
-exports.createCar = (req, res, next) => {
-  const data = carService.createCar(req.body);
+exports.createCar = async (req, res, next) => {
+  const carData = {
+    plate: req.body.plate,
+    manufacture: req.body.manufacture,
+    model: req.body.model,
+    rentPerDay: parseFloat(req.body.rentPerDay), // convert string to number
+    capacity: parseInt(req.body.capacity), // convert string to integer
+    description: req.body.description,
+    availableAt: req.body.availableAt,
+    transmission: req.body.transmission,
+    available: req.body.available === "true", // convert string to boolean
+    type: req.body.type,
+    year: parseInt(req.body.year), // convert string to integer
+    options: JSON.parse(req.body.options), // parse string to array
+    specs: JSON.parse(req.body.specs), // parse string to array
+  };
+
+  const data = await carService.createCar(carData, req.files);
   successResponse(res, data);
 };
 
@@ -26,8 +42,25 @@ exports.deleteCarById = (req, res, next) => {
   successResponse(res, data);
 };
 
-exports.updateCar = (req, res, next) => {
+exports.updateCar = async (req, res, next) => {
   const { id } = req.params;
-  const data = carService.updateCar(id, req.body);
+
+  const carData = {
+    plate: req.body.plate,
+    manufacture: req.body.manufacture,
+    model: req.body.model,
+    rentPerDay: parseFloat(req.body.rentPerDay), // convert string to number
+    capacity: parseInt(req.body.capacity), // convert string to integer
+    description: req.body.description,
+    availableAt: req.body.availableAt,
+    transmission: req.body.transmission,
+    available: req.body.available === "true", // convert string to boolean
+    type: req.body.type,
+    year: parseInt(req.body.year), // convert string to integer
+    options: JSON.parse(req.body.options), // parse string to array
+    specs: JSON.parse(req.body.specs), // parse string to array
+  };
+
+  const data = await carService.updateCar(id, carData, req.files);
   successResponse(res, data);
 };

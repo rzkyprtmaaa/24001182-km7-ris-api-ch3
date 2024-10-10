@@ -803,27 +803,49 @@
         ]
     },
     {
-        "id": "c39ecf96-c3f8-4c4d-8171-6b20342888b1",
-        "plate": "B 1503 RRQ",
-        "manufacture": "BMW",
-        "model": "M3 GTR Super",
-        "image": "./images/car26.min.jpg",
-        "rentPerDay": 5000000,
-        "capacity": 2,
-        "description": "Mobil MC di NFS Most Wanted",
-        "availableAt": "10 Oktober 2024",
-        "transmission": "Semi Automatic",
-        "available": false,
-        "type": "Racing",
-        "year": 2015,
+        "id": "cbebdc18-fb2e-4afa-bbd0-8c3c010c85e8",
+        "plate": "test1",
+        "manufacture": "test1",
+        "model": "test1",
+        "rentPerDay": 1000000,
+        "capacity": 6,
+        "description": "test1",
+        "availableAt": "test1",
+        "transmission": "test1",
+        "available": true,
+        "type": "test1",
+        "year": 2024,
         "options": [
-            "pokoknya",
-            "ini mobil",
-            "keren bgt bwang"
+            "options 1",
+            "options2"
         ],
         "specs": [
-            "gausah ditanya lagi",
-            "udah pasti gacor"
-        ]
+            "specs1",
+            "specs2"
+        ],
+        "image": "https://ik.imagekit.io/rpratama/eno_bening_2wLniHxud.jpg"
+    },
+    {
+        "id": "1d90f47c-7df8-422c-8d2d-9e6731673031",
+        "plate": "test2",
+        "manufacture": "test2",
+        "model": "test2",
+        "rentPerDay": 20000,
+        "capacity": 2,
+        "description": "test2",
+        "availableAt": "test2",
+        "transmission": "test2",
+        "available": true,
+        "type": "test2",
+        "year": 1995,
+        "options": [
+            "options 1",
+            "options2"
+        ],
+        "specs": [
+            "specs1",
+            "specs2"
+        ],
+        "image": "https://ik.imagekit.io/rpratama/cat_AW0VHCV9Z.jpg"
     }
 ]

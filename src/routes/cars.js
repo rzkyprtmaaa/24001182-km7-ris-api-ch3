@@ -16,10 +16,15 @@ const {
 
 const router = express.Router();
 
-router.get("/", validateGetCars, getCars);
-router.get("/:id", validateGetCarById, getCarById);
-router.post("/", validateCreateCar, createCar);
-router.delete("/:id", validateDeleteCarById, deleteCarById);
-router.put("/:id", validateUpdateCar, updateCar);
+router
+  .route("/")
+  .get(validateGetCars, getCars)
+  .post(validateCreateCar, createCar);
+
+router
+  .route("/:id")
+  .get(validateGetCarById, getCarById)
+  .put(validateUpdateCar, updateCar)
+  .delete(validateDeleteCarById, deleteCarById);
 
 module.exports = router;

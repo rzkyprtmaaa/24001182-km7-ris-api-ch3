@@ -36,24 +36,44 @@ exports.validateCreateCar = (req, res, next) => {
     plate: z.string(),
     manufacture: z.string(),
     model: z.string(),
-    image: z.string(),
-    rentPerDay: z.number(),
-    capacity: z.number(),
+    rentPerDay: z.string(),
+    capacity: z.string(),
     description: z.string(),
     availableAt: z.string(),
     transmission: z.string(),
-    available: z.boolean(),
+    available: z.string(),
     type: z.string(),
-    year: z.number(),
-    options: z.array(z.string()),
-    specs: z.array(z.string()),
+    year: z.string(),
+    options: z.string(),
+    specs: z.string(),
   });
+
+  // Validate the file
+  const validateFileBody = z
+    .object({
+      image: z
+        .object({
+          name: z.string(),
+          data: z.any(),
+        })
+        .nullable()
+        .optional(),
+    })
+    .nullable()
+    .optional();
 
   // validate
   const result = validateBody.safeParse(req.body);
   if (!result.success) {
     // If validation fails, return error messages
     throw new BadRequestError(result.error.errors);
+  }
+
+  // Validate
+  const resultValidateFiles = validateFileBody.safeParse(req.files);
+  if (!resultValidateFiles.success) {
+    // If validation fails, return error messages
+    throw new BadRequestError(resultValidateFiles.error.errors);
   }
 
   next();
@@ -91,24 +111,44 @@ exports.validateUpdateCar = (req, res, next) => {
     plate: z.string(),
     manufacture: z.string(),
     model: z.string(),
-    image: z.string(),
-    rentPerDay: z.number(),
-    capacity: z.number(),
+    rentPerDay: z.string(),
+    capacity: z.string(),
     description: z.string(),
     availableAt: z.string(),
     transmission: z.string(),
-    available: z.boolean(),
+    available: z.string(),
     type: z.string(),
-    year: z.number(),
-    options: z.array(z.string()),
-    specs: z.array(z.string()),
+    year: z.string(),
+    options: z.string(),
+    specs: z.string(),
   });
+
+  // The file is not required
+  const validateFileBody = z
+    .object({
+      image: z
+        .object({
+          name: z.string(),
+          data: z.any(),
+        })
+        .nullable()
+        .optional(),
+    })
+    .nullable()
+    .optional();
 
   // Validate
   const resultValidateBody = validateBody.safeParse(req.body);
   if (!resultValidateBody.success) {
     // If validation fails, return error messages
     throw new BadRequestError(result.error.errors);
+  }
+
+  // Validate
+  const resultValidateFiles = validateFileBody.safeParse(req.files);
+  if (!resultValidateFiles.success) {
+    // If validation fails, return error messages
+    throw new BadRequestError(resultValidateFiles.error.errors);
   }
 
   next();
