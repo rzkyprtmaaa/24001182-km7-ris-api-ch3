@@ -140,20 +140,5 @@ exports.validateUpdateStudent = (req, res, next) => {
     throw new BadRequestError(resultValidateFiles.error.errors);
   }
 
-  // Convert to student data format
-  req.body = {
-    ...req.body,
-    address: {
-      province: req.body["address.province"],
-      city: req.body["address.city"],
-    },
-    education: {
-      bachelor: req.body["education.bachelor"],
-    },
-  };
-  delete req.body["address.province"];
-  delete req.body["address.city"];
-  delete req.body["education.bachelor"];
-
   next();
 };

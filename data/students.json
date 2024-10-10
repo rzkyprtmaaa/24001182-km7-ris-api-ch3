@@ -123,14 +123,11 @@
         "class": "FSW-1",
         "address": {
             "province": "DKI Jakarta",
-            "city": "North Jakarta"
+            "city": "South Jakarta"
         },
         "education": {
             "bachelor": "Universitas Indonesia"
         },
-        "profilePicture": "https://ik.imagekit.io/rpratama/eno_bening_CVxjrBK0p.jpg",
-        "address.province": "DKI Jakarta",
-        "address.city": "North Jakarta",
-        "education.bachelor": "Universitas Indonesia"
+        "profilePicture": "https://ik.imagekit.io/rpratama/eno_bening_p_WaLrI7P.jpg"
     }
 ]
