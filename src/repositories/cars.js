@@ -1,19 +1,34 @@
 const fs = require("fs");
 const { v4: uuidv4 } = require("uuid");
 const cars = require("../../data/cars.json");
+const { NotFoundError, InternalServerError } = require("../utils/request");
 
-exports.getCars = (manufacture) => {
+exports.getCars = (manufacture, capacityNumber) => {
   const searchedCar = cars.filter((car) => {
     // Do filter logic here
     let result = true;
+
+    // Filter by manufacture if provided
     if (manufacture) {
       const isFoundManufacture = car.manufacture
         .toLowerCase()
         .includes(manufacture.toLowerCase());
       result = result && isFoundManufacture;
     }
+
+    // Filter by capacity if provided
+    if (capacityNumber !== null) {
+      const isFoundCapacity = car.capacity >= capacityNumber;
+      result = result && isFoundCapacity;
+    }
     return result;
   });
+
+  // If no cars were found
+  if (searchedCar.length === 0) {
+    throw new NotFoundError("No car is available!");
+  }
+
   return searchedCar;
 };
 

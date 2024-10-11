@@ -2,8 +2,14 @@ const carService = require("../services/cars");
 const { successResponse } = require("../utils/response");
 
 exports.getCars = (req, res, next) => {
-  // Call the usecase or service
-  const data = carService.getCars(req.query?.manufacture);
+  // Extract manufacture and capacity from the query
+  const { manufacture, capacity } = req.query;
+
+  // Convert capacity to a number
+  const capacityNumber = capacity ? parseInt(capacity) : null;
+
+  // Call the service to get filtered cars based on manufacture and capacity
+  const data = carService.getCars(manufacture, capacityNumber);
 
   successResponse(res, data);
 };

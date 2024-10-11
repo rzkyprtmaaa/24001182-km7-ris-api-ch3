@@ -5,9 +5,10 @@ exports.validateGetCars = (req, res, next) => {
   // Validate the query
   const validateQuery = z.object({
     manufacture: z.string().optional(),
+    capacity: z.string().optional(),
   });
 
-  const resultValidateQuery = validateQuery.safeParse(req.params);
+  const resultValidateQuery = validateQuery.safeParse(req.query);
   if (!resultValidateQuery.success) {
     // If validation fails, return error messages
     throw new BadRequestError(resultValidateQuery.error.errors.map);
